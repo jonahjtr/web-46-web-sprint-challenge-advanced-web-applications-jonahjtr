@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 
-import Login from "./components/Login";
 import "./styles.scss";
+import Login from "./components/Login";
+import BubblePage from "./components/BubblePage";
 
 function App() {
   return (
@@ -10,8 +12,16 @@ function App() {
       <div className="App">
         <header>
           Color Picker Sprint Challenge
-          <a data-testid="logoutButton" href="#">logout</a>
+          <Link to="/">Login</Link>
+          <a data-testid="logoutButton" href="#">
+            logout
+          </a>
         </header>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute exact path="/BubblePage" component={BubblePage} />
+        </Switch>
       </div>
     </Router>
   );
