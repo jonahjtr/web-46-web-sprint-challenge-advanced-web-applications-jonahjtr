@@ -4,6 +4,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import "./styles.scss";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import BubblePage from "./components/BubblePage";
 
 function App() {
@@ -13,14 +14,18 @@ function App() {
         <header>
           Color Picker Sprint Challenge
           <Link to="/">Login</Link>
-          <a data-testid="logoutButton" href="#">
+          <Link data-testid="logoutButton" to="/Logout">
+            Logout
+          </Link>
+          {/* <a data-testid="logoutButton" href="#">
             logout
-          </a>
+          </a> */}
         </header>
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/login" component={Login} />
           <PrivateRoute exact path="/BubblePage" component={BubblePage} />
+          <Route path="/Logout" component={Logout} />
         </Switch>
       </div>
     </Router>
